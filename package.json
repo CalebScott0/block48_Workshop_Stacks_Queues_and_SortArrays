@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "jest": "^29.7.0"
+  },
+  "name": "block48_workshop_stacks_queues_and_sortarrays",
+  "version": "1.0.0",
+  "description": "\"Workshop problems Block48\"",
+  "main": "q1.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC"
+}

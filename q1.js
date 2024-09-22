@@ -26,7 +26,7 @@ const validString = (str) => {
     } else if (str[i] === "}") {
       // for condition to be true innermost brackets most always close themselves with nothing in between
       const prevBracket = stack.pop();
-      result = prevBracket === "}";
+      result = prevBracket === "{";
     } else if (str[i] === "]") {
       // for condition to be true innermost brackets most always close themselves with nothing in between
       const prevBracket = stack.pop();
@@ -39,8 +39,12 @@ const validString = (str) => {
   return result;
 };
 
+module.exports = { validString };
+
 console.log(validString("()")); // expect true
 console.log(validString("[]({})")); // expect true
-console.log(validString("{]}")); // expect false
-console.log(validString("{}[({[(]})]{[)]}")); // expect false
+console.log(validString("{[}]")); // expect false
+console.log(validString("{}[({[(]})]{[)]}")); // expect false -> secind '(' has no corresponding closing
 console.log(validString("{}[({[()]})]{[(())]}")); // expect true
+
+// console.log(validString("{}")); // expect true - for debug  - initally had closing bracket in result check instead of opening curly
