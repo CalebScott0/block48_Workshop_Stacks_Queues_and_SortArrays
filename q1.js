@@ -15,16 +15,32 @@
 const validString = (str) => {
   // initialize a stack
   let stack = [];
+  let result = false;
   //   iterate through string
   for (let i = 0; i < str.length; i++) {
     // push to stack until a closing bracket is reached
-    if (str[i] === ")" || str[i] === "]" || str[i] === "}") {
+    if (str[i] === ")") {
+      // for condition to be true innermost brackets most always close themselves with nothing in between
+      const prevBracket = stack.pop();
+      result = prevBracket === "(";
+    } else if (str[i] === "}") {
+      // for condition to be true innermost brackets most always close themselves with nothing in between
+      const prevBracket = stack.pop();
+      result = prevBracket === "}";
+    } else if (str[i] === "]") {
+      // for condition to be true innermost brackets most always close themselves with nothing in between
+      const prevBracket = stack.pop();
+      result = prevBracket === "[";
     } else {
       // push items to stack
       stack.push(str[i]);
     }
-    return stack;
   }
+  return result;
 };
 
-console.log(validString("()"));
+console.log(validString("()")); // expect true
+console.log(validString("[]({})")); // expect true
+console.log(validString("{]}")); // expect false
+console.log(validString("{}[({[(]})]{[)]}")); // expect false
+console.log(validString("{}[({[()]})]{[(())]}")); // expect true
