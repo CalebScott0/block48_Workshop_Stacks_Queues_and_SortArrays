@@ -1,5 +1,7 @@
+/* Is there a way to do this without looping through the whole
+ * array at the end to check differences?
+ */
 // merge sort = efficient method?
-// Do with JS sort function after first solution complete
 
 /*  calculates the minimum number of students who are not standing in the correct positions
  *   after the rearrangement.
@@ -14,37 +16,48 @@
  * Output: 6
  */
 
-// Using selecction sort
-const heightChecker = (heights, n) => {
-  const copyArray = [...heights];
-  let i,
-    j,
-    min_idx,
-    count = 0;
+// using JS sort
+// const heightChecker = (heights, n) => {
+//   let count = 0;
+//   const copyArray = [...heights];
+//   heights.sort((a, b) => (a < b ? -1 : 1));
+//   heights.forEach((_, i) => copyArray[i] !== heights[i] && count++);
+//   return count;
+// };
 
-  for (i = 0; i < n - 1; i++) {
-    min_idx = i;
-    for (j = i + 1; j < n; j++) {
-      //find smallest idx in unsorted array
-      if (heights[j] < heights[min_idx]) {
-        min_idx = j;
-        // count++
-        // having count here FALLS APART IF THERE ARE MULTIPLE MINIMUMS IN AN ITERATION
-      }
-    }
+// Using selection sort
+// const heightChecker = (heights, n) => {
+//   const copyArray = [...heights];
+//   let i,
+//     j,
+//     min_idx,
+//     count = 0;
 
-    // Check if index to swap is not equal to unsorted boundary before swap
-    if (min_idx !== i) {
-      let temp = heights[min_idx];
-      heights[min_idx] = heights[i];
-      heights[i] = temp;
-    }
-  }
-  // for each item in sorted array that does not match original array, increment count
-  heights.forEach((_, i) => copyArray[i] !== heights[i] && count++);
+//   for (i = 0; i < n - 1; i++) {
+//     min_idx = i;
+//     for (j = i + 1; j < n; j++) {
+//       //find smallest idx in unsorted array
+//       if (heights[j] < heights[min_idx]) {
+//         min_idx = j;
+//         /* count++
+//          * having count here FALLS APART IF THERE ARE MULTIPLE MINIMUMS IN AN ITERATION
+//          * i.e will count more than once before swap occurs
+//          */
+//       }
+//     }
 
-  return count;
-};
+//     // Check if index to swap is not equal to unsorted boundary before swap
+//     if (min_idx !== i) {
+//       let temp = heights[min_idx];
+//       heights[min_idx] = heights[i];
+//       heights[i] = temp;
+//     }
+//   }
+//   // for each item in sorted array that does not match original array, increment count
+//   heights.forEach((_, i) => copyArray[i] !== heights[i] && count++);
+
+//   return count;
+// };
 
 // Using insertion sort
 
