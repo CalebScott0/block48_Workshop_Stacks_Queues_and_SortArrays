@@ -16,12 +16,69 @@
  * Output: 6
  */
 
+const swap = (arr, xp, yp) => {
+  let temp = arr[xp];
+  arr[xp] = arr[yp];
+  arr[yp] = temp;
+};
+
+// compare all 4 methods in code visualizer!!
+
+// Using bubble sort
+const bubbleSort = (heights, n) => {
+  for (let i = 0; i < n - 1; i++) {
+    for (let j = 0; j < n - i - 1; j++) {
+      // compare and swap if right element is greater
+      if (heights[j] > heights[j + 1]) {
+        swap(heights, j, j + 1);
+      }
+    }
+  }
+  return heights;
+};
+
+const heightChecker = (array) => {
+  const copyArray = [...array];
+  let count = 0;
+  const sortedArray = bubbleSort(array, array.length);
+  sortedArray.forEach((_, i) => sortedArray[i] !== copyArray[i] && count++);
+  return count;
+};
+
+const array1 = [3, 6, 4, 2, 2, 1, 4]; //expect 7
+const example1 = heightChecker(array1, array1.length);
+console.log(example1);
+
 // using JS sort
 // const heightChecker = (heights, n) => {
 //   let count = 0;
 //   const copyArray = [...heights];
 //   heights.sort((a, b) => (a < b ? -1 : 1));
 //   heights.forEach((_, i) => copyArray[i] !== heights[i] && count++);
+//   return count;
+// };
+
+// Using insertion sort
+// const insertionSort = (heights, n) => {
+//   for (let i = 1; i < n; i++) {
+//     // current element to check
+//     let key = heights[i];
+//     // predecessor to check against
+//     let j = i - 1;
+//     // compare to all elements before key and shift up 1 if smaller
+//     while (j >= 0 && heights[j] > key) {
+//       heights[j + 1] = heights[j];
+//       j--;
+//     }
+//     heights[j + 1] = key;
+//   }
+//   return heights;
+// };
+// const heightChecker = (array) => {
+//   let count = 0;
+//   const copyArray = [...array];
+//   let sortedArray = insertionSort(array, array.length);
+//   sortedArray.forEach((_, i) => copyArray[i] !== array[i] && count++);
 //   return count;
 // };
 
@@ -58,11 +115,5 @@
 
 //   return count;
 // };
-
-// Using insertion sort
-
-const array1 = [3, 6, 4, 2, 2, 1, 4]; //expect 7
-const example1 = heightChecker(array1, array1.length);
-console.log(example1);
 
 module.exports = { heightChecker };
