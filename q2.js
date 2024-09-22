@@ -1,11 +1,11 @@
 // each person may only buy one ticket a time and then must go to the back of the qeue
 
 // ** find a way to do this that does not empty the queue fully before next iteration **
-  // maybe with a map of index in line at the beginning and # of tickets
-    // and a queue to iterate through line?
-    // let queue = [...arr];
-    // let queue = Array(...arr);
-    // let queue = Array.from([...arr]);
+// maybe with a map of index in line at the beginning and # of tickets
+// and a queue to iterate through line?
+// let queue = [...arr];
+// let queue = Array(...arr);
+// let queue = Array.from([...arr]);
 
 const ticketTime = (arr, k) => {
   let queue = [];
@@ -14,20 +14,13 @@ const ticketTime = (arr, k) => {
   while (arr[k] > 0) {
     // loop through array
     for (let i = 0; i < arr.length; i++) {
-      // add people who still have tickets to buy if target is not at 0
-      if (arr[k] !== 0 && arr[i] !== 0) {
+      // add people to queue who still have tickets to buy
+      if (arr[i] !== 0) {
         queue.push(arr[i]);
         // decrement remaining tickets to buy
         arr[i]--;
-        //   exit if target is at 0 to avoid going all through way back through array
-        if (arr[k] === 0) {
-          while (queue.length > 0) {
-            // target k will be at end of queue, return count after queue is empty
-            queue.shift();
-            count++;
-          }
-          return count;
-        }
+        //   exit if target is at 0 after decrement to avoid going all through way back through array
+        if (arr[k] === 0) break;
       }
     }
     // add 1 to count for each in line if target is not on their last ticket
@@ -37,6 +30,7 @@ const ticketTime = (arr, k) => {
       count++;
     }
   }
+  return count;
 };
 
 console.log(ticketTime([7, 1, 1, 1], (k = 0))); // expect 10
