@@ -18,7 +18,7 @@ const arr = [
   [5, 2],
 ];
 
-// ** NOT SOLVED YET!!
+// Try finding another solution at the bottom besides splice?
 
 // const sortedArr = arr.sort((a, b) => (a[1] < b[1] ? 1 : -1));
 // const sortedArr2 = arr.sort((a, b) => (a[0] < b[0] ? 1 : -1));
@@ -28,11 +28,10 @@ const arr = [
 // -> second idx sorted in decreasing order, and then first idx sorted in decreasing order
 /* -> this can be broken apart into sorting [0] if first idx of compare element doesn't match
  *      or sorting [1] if first idxs do match
- *      done as a modified insertion sort?
+ *      done as an insertion sort?
  */
 
-const sort = (array) => {
-  console.log(array);
+const sortQueue = (array) => {
   // function to swap items in array
   const swap = (arr, x, y) => {
     let temp = arr[x];
@@ -64,11 +63,20 @@ const sort = (array) => {
       }
     }
   }
+  // check what sorted array equals before placing in new queue
+  // console.log(array);
   const newQueue = [];
   array.forEach((item) => {
+    // index to insert into new queue
     let idx = item[1];
     console.log(idx);
+    // splice below, first parameter is index of the array to start deletion/insertion
+    // 0 = numbers of items to delete as we want to add to array
+    // item is current array value to insert at idx of newQueue
+    newQueue.splice(idx, 0, item);
   });
-  return array;
+  return newQueue;
 };
-console.log(sort(arr));
+console.log(sortQueue(arr));
+
+module.exports = { sortQueue };
