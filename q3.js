@@ -22,8 +22,6 @@ const swap = (arr, xp, yp) => {
   arr[yp] = temp;
 };
 
-// compare all 4 methods in code visualizer!!
-
 // Using bubble sort
 const bubbleSort = (heights, n) => {
   for (let i = 0; i < n - 1; i++) {
