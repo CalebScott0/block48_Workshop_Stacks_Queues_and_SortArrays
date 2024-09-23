@@ -18,8 +18,10 @@ const arr = [
   [6, 2],
   [5, 2],
 ];
+
+// ** NOT SOLVED YET!!
+
 const sortedArr = arr.sort((a, b) => (a[1] > b[1] ? 1 : -1));
-const sortedArr2 = arr.sort((a, b) => (a[0] < b[0] ? 1 : -1));
 // [ [ 5, 2 ], [ 5, 0 ], [ 5, 5 ], [ 6, 2 ], [ 8, 0 ], [ 9, 0 ] ]
 const sort = (array) => {
   // insertion sort to move elements into correct position based on value and second index
@@ -41,8 +43,6 @@ const sort = (array) => {
   }
   return array;
 };
-console.log(sort(sortedArr2));
+console.log(sort(sortedArr));
 
-// [ [ 5, 2 ], [ 5, 0 ], [ 5, 5 ], [ 6, 2 ], [ 8, 0 ], [ 9, 0 ] ]
-// [ [ 5, 0 ], [ 5, 2 ], [ 8, 0 ], [ 9, 0 ], [ 6, 2 ] [ 5, 5 ] ] - idx = 3
-// [ [ 5, 0 ], [ 5, 2 ], [ 8, 0 ], [ 9, 0 ], [ 6, 2 ] [ 5, 5 ] ] - idx = 3
+
