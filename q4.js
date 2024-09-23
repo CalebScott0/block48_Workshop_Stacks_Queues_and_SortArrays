@@ -23,11 +23,6 @@ const sortedArr2 = arr.sort((a, b) => (a[0] < b[0] ? 1 : -1));
 // [ [ 5, 2 ], [ 5, 0 ], [ 5, 5 ], [ 6, 2 ], [ 8, 0 ], [ 9, 0 ] ]
 const sort = (array) => {
   // insertion sort to move elements into correct position based on value and second index
-  let res = [];
-  for (const person of array) {
-    res.splice(person[1], 2 array);
-  }
-  return res;
   for (let i = 0; i < array.length - 1; i++) {
     // second index is the amount of items[0] before it that need to be greater or equal
     let timesToMove = array[i][1];
